@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Claim Faucets</title>
+  <title>Faucets List</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,6 +12,18 @@
     }
     h1 {
       text-align: center;
+    }
+    .search-box {
+      max-width: 400px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
     .card-container {
       display: grid;
@@ -39,35 +51,65 @@
 </head>
 <body>
   <h1>Blockchain Faucets</h1>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Cari nama jaringan...">
+  </div>
+
   <div class="card-container" id="cardContainer">
     <!-- Cards will be injected here -->
   </div>
 
   <script>
+    let faucetData = [];
+
+    function renderCards(data) {
+      const container = document.getElementById('cardContainer');
+      container.innerHTML = '';
+
+      if (data.length === 0) {
+        container.innerHTML = '<p>Tidak ditemukan jaringan dengan nama tersebut.</p>';
+        return;
+      }
+
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const testnetLinks = item.testnetFaucets.length
+          ? item.testnetFaucets.map(url => `<a href="${url}" target="_blank">${url}</a>`).join("")
+          : "-";
+
+        const mainnetLinks = item.mainnetFaucets.length
+          ? item.mainnetFaucets.map(url => `<a href="${url}" target="_blank">${url}</a>`).join("")
+          : "-";
+
+        card.innerHTML = `
+          <h2>${item.networkName}</h2>
+          <p><strong>Testnet Faucets:</strong><br>${testnetLinks}</p>
+          <p><strong>Mainnet Faucets:</strong><br>${mainnetLinks}</p>
+          <p><strong>Wallet Providers:</strong> ${item.walletProviders.join(", ")}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterCards() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = faucetData.filter(item =>
+        item.networkName.toLowerCase().includes(query)
+      );
+      renderCards(filtered);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', filterCards);
+
+    // Load JSON
     fetch('faucets.json')
       .then(response => response.json())
       .then(data => {
-        const container = document.getElementById('cardContainer');
-        data.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'card';
-
-          const testnetLinks = item.testnetFaucets.length
-            ? item.testnetFaucets.map(url => `<a href="${url}" target="_blank">${url}</a>`).join("")
-            : "-";
-
-          const mainnetLinks = item.mainnetFaucets.length
-            ? item.mainnetFaucets.map(url => `<a href="${url}" target="_blank">${url}</a>`).join("")
-            : "-";
-
-          card.innerHTML = `
-            <h2>${item.networkName}</h2>
-            <p><strong>Testnet Faucets:</strong><br>${testnetLinks}</p>
-            <p><strong>Mainnet Faucets:</strong><br>${mainnetLinks}</p>
-            <p><strong>Wallet Providers:</strong> ${item.walletProviders.join(", ")}</p>
-          `;
-          container.appendChild(card);
-        });
+        faucetData = data;
+        renderCards(faucetData);
       })
       .catch(error => {
         console.error('Error loading faucets.json:', error);
