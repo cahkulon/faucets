@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Faucets List</title>
+  <title>Claim Faucets</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -33,6 +33,7 @@
     .card a {
       color: #007BFF;
       text-decoration: none;
+      display: block;
     }
   </style>
 </head>
@@ -50,12 +51,19 @@
         data.forEach(item => {
           const card = document.createElement('div');
           card.className = 'card';
+
+          const testnetLinks = item.testnetFaucets.length
+            ? item.testnetFaucets.map(url => `<a href="${url}" target="_blank">${url}</a>`).join("")
+            : "-";
+
+          const mainnetLinks = item.mainnetFaucets.length
+            ? item.mainnetFaucets.map(url => `<a href="${url}" target="_blank">${url}</a>`).join("")
+            : "-";
+
           card.innerHTML = `
             <h2>${item.networkName}</h2>
-            <p><strong>Testnet Faucets:</strong> 
-              ${item.testnetFaucets !== "-" ? `<a href="${item.testnetFaucets}" target="_blank">${item.testnetFaucets}</a>` : "-"}</p>
-            <p><strong>Mainnet Faucets:</strong> 
-              ${item.mainnetFaucets !== "-" ? `<a href="${item.mainnetFaucets}" target="_blank">${item.mainnetFaucets}</a>` : "-"}</p>
+            <p><strong>Testnet Faucets:</strong><br>${testnetLinks}</p>
+            <p><strong>Mainnet Faucets:</strong><br>${mainnetLinks}</p>
             <p><strong>Wallet Providers:</strong> ${item.walletProviders.join(", ")}</p>
           `;
           container.appendChild(card);
