@@ -1,14 +1,19 @@
 [
   {
     "networkName": "Binance Smart Chain",
-    "testnetFaucets": "https://www.bnbchain.org/en/testnet-faucet",
-    "mainnetFaucets": "-",
+    "testnetFaucets": [
+      "https://www.bnbchain.org/en/testnet-faucet",
+      "https://testnet.binance.org/faucet-smart"
+    ],
+    "mainnetFaucets": [],
     "walletProviders": ["Metamask", "OKX Wallet"]
   },
   {
     "networkName": "Polygon",
-    "testnetFaucets": "https://faucet.polygon.technology/",
-    "mainnetFaucets": "-",
+    "testnetFaucets": [
+      "https://faucet.polygon.technology/"
+    ],
+    "mainnetFaucets": [],
     "walletProviders": ["Metamask"]
   }
 ]
