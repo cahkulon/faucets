@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faucets List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+    }
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card h2 {
+      margin-top: 0;
+    }
+    .card p {
+      margin: 0.5rem 0;
+    }
+    .card a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Blockchain Faucets</h1>
+  <div class="card-container" id="cardContainer">
+    <!-- Cards will be injected here -->
+  </div>
+
+  <script>
+    fetch('faucets.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('cardContainer');
+        data.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h2>${item.networkName}</h2>
+            <p><strong>Testnet Faucets:</strong> 
+              ${item.testnetFaucets !== "-" ? `<a href="${item.testnetFaucets}" target="_blank">${item.testnetFaucets}</a>` : "-"}</p>
+            <p><strong>Mainnet Faucets:</strong> 
+              ${item.mainnetFaucets !== "-" ? `<a href="${item.mainnetFaucets}" target="_blank">${item.mainnetFaucets}</a>` : "-"}</p>
+            <p><strong>Wallet Providers:</strong> ${item.walletProviders.join(", ")}</p>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading faucets.json:', error);
+      });
+  </script>
+</body>
+</html>
