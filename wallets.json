@@ -1,0 +1,71 @@
+[
+  {
+    "name": "Metamask",
+    "emoji": "🦊",
+    "chainType": "EVM",
+    "links": {
+      "website": "https://metamask.io/download",
+      "chromeExtension": "https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn",
+      "mobileApp": "https://metamask.io/download.html"
+    }
+  },
+  {
+    "name": "OKX Wallet",
+    "emoji": "🆗",
+    "chainType": "EVM",
+    "links": {
+      "website": "https://www.okx.com/web3",
+      "chromeExtension": "https://chromewebstore.google.com/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge",
+      "mobileApp": "https://www.okx.com/download"
+    }
+  },
+  {
+    "name": "Phantom",
+    "emoji": "👻",
+    "chainType": "Solana",
+    "links": {
+      "website": "https://phantom.app/",
+      "chromeExtension": "https://chromewebstore.google.com/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa",
+      "mobileApp": "https://phantom.app/download"
+    }
+  },
+  {
+    "name": "Solflare",
+    "emoji": "🔥",
+    "chainType": "Solana",
+    "links": {
+      "website": "https://solflare.com/",
+      "chromeExtension": "https://chromewebstore.google.com/detail/solflare-wallet/bhhhlbepdkbapadjdnnojkbgioiodbic",
+      "mobileApp": "https://solflare.com/download"
+    }
+  },
+  {
+    "name": "Coinbase Wallet",
+    "emoji": "🟡",
+    "chainType": "EVM",
+    "links": {
+      "website": "https://www.coinbase.com/wallet",
+      "chromeExtension": "https://chromewebstore.google.com/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad",
+      "mobileApp": "https://www.coinbase.com/wallet/downloads"
+    }
+  },
+  {
+    "name": "Unisat",
+    "emoji": "🟠",
+    "chainType": "Bitcoin",
+    "links": {
+      "website": "https://unisat.io/",
+      "chromeExtension": "https://chromewebstore.google.com/detail/unisat-wallet/ppbibelpcjmhbdihakflkdcoccbgbkpo",
+      "mobileApp": "https://unisat.io/download"
+    }
+  },
+  {
+    "name": "Electrum",
+    "emoji": "⚡",
+    "chainType": "Bitcoin",
+    "links": {
+      "website": "https://electrum.org/",
+      "desktopApp": "https://electrum.org/#download"
+    }
+  }
+]

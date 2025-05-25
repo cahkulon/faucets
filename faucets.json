@@ -1,19 +1,89 @@
 [
   {
     "networkName": "Binance Smart Chain",
+    "networkEmoji": "🔶",
+    "chainType": "EVM",
     "testnetFaucets": [
-      "https://www.bnbchain.org/en/testnet-faucet",
-      "https://testnet.binance.org/faucet-smart"
+      {
+        "name": "BNB Chain Official Faucet",
+        "url": "https://www.bnbchain.org/en/testnet-faucet"
+      },
+      {
+        "name": "Binance Testnet Faucet",
+        "url": "https://testnet.binance.org/faucet-smart"
+      }
     ],
     "mainnetFaucets": [],
     "walletProviders": ["Metamask", "OKX Wallet"]
   },
   {
     "networkName": "Polygon",
+    "networkEmoji": "🔺",
+    "chainType": "EVM",
     "testnetFaucets": [
-      "https://faucet.polygon.technology/"
+      {
+        "name": "Polygon Official Faucet",
+        "url": "https://faucet.polygon.technology/"
+      }
     ],
     "mainnetFaucets": [],
     "walletProviders": ["Metamask"]
+  },
+  {
+    "networkName": "Solana",
+    "networkEmoji": "◎",
+    "chainType": "Solana",
+    "testnetFaucets": [
+      {
+        "name": "Solana Testnet Faucet",
+        "url": "https://faucet.solana.com/"
+      }
+    ],
+    "mainnetFaucets": [],
+    "walletProviders": ["Phantom", "Solflare"]
+  },
+  {
+    "networkName": "Ethereum",
+    "networkEmoji": "⎈",
+    "chainType": "EVM",
+    "testnetFaucets": [
+      {
+        "name": "Alchemy Sepolia Faucet",
+        "url": "https://www.alchemy.com/faucets/ethereum-sepolia"
+      },
+      {
+        "name": "Sepolia Official Faucet",
+        "url": "https://sepoliafaucet.com/"
+      }
+    ],
+    "mainnetFaucets": [
+      {
+        "name": "Ethereum Mainnet Faucet",
+        "url": "https://freeeth.xyz/"
+      }
+    ],
+    "walletProviders": ["Metamask", "Coinbase Wallet"]
+  },
+  {
+    "networkName": "Bitcoin",
+    "networkEmoji": "₿",
+    "chainType": "Bitcoin",
+    "testnetFaucets": [
+      {
+        "name": "Bitcoin Testnet Faucet",
+        "url": "https://bitcoinfaucet.uo1.net/"
+      },
+      {
+        "name": "Testnet Faucet",
+        "url": "https://testnet-faucet.com/btc-testnet/"
+      }
+    ],
+    "mainnetFaucets": [
+      {
+        "name": "Bitcoin Mainnet Faucet",
+        "url": "https://freebitco.in/"
+      }
+    ],
+    "walletProviders": ["Unisat", "Electrum"]
   }
 ]

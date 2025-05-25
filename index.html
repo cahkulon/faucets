@@ -3,117 +3,457 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Faucets List</title>
+  <title>Blockchain Faucet Directory</title>
   <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --background-color: #f8f9fa;
+      --card-color: #ffffff;
+      --text-color: #333333;
+      --border-color: #e0e0e0;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 2rem;
-      background-color: #f4f4f4;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
     }
-    h1 {
+    
+    h1, h2 {
       text-align: center;
+      color: var(--secondary-color);
+      margin-bottom: 2rem;
     }
+    
     .search-box {
-      max-width: 400px;
+      max-width: 600px;
       margin: 0 auto 2rem;
       text-align: center;
     }
+    
     .search-box input {
       width: 100%;
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1.25rem;
       font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: 2px solid var(--border-color);
+      border-radius: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
     }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 2px 12px rgba(67, 97, 238, 0.2);
+    }
+    
     .card-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
     }
+    
     .card {
+      background: var(--card-color);
+      padding: 1.75rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+    
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .faucet-section {
+      margin-bottom: 1.5rem;
+    }
+    
+    .faucet-section h4 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+    }
+    
+    .faucet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .faucet-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .faucet-item a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .faucet-item a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+    
+    .chain-type {
+      margin: 1rem 0;
+      padding: 0.75rem;
+      background: rgba(67, 97, 238, 0.05);
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .download-wallet-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .download-wallet-link:hover {
+      text-decoration: underline;
+    }
+    
+    .wallet-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .wallet-section h2 {
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    
+    .chain-selector {
+      margin-bottom: 2rem;
+    }
+    
+    .chain-selector select {
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
       background: white;
+      font-size: 1rem;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .chain-selector select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    
+    .wallet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .wallet-card {
+      background: var(--card-color);
       padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
     }
-    .card h2 {
-      margin-top: 0;
+    
+    .wallet-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
-    .card p {
-      margin: 0.5rem 0;
+    
+    .wallet-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
     }
-    .card a {
-      color: #007BFF;
+    
+    .wallet-name {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    
+    .wallet-chain {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background: rgba(67, 97, 238, 0.1);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: var(--primary-color);
+    }
+    
+    .wallet-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .wallet-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-color);
       text-decoration: none;
-      display: block;
+      transition: all 0.2s ease;
+    }
+    
+    .wallet-link:hover {
+      color: var(--secondary-color);
+    }
+    
+    .no-results {
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 2rem;
+      color: #666;
+    }
+    
+    .empty-state {
+      color: #888;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
-  <h1>Blockchain Faucets</h1>
+  <h1>🔗 Blockchain Faucet Directory</h1>
 
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Cari nama jaringan...">
+    <input type="text" id="searchInput" placeholder="Search for a network (e.g., Ethereum, Polygon)...">
   </div>
 
   <div class="card-container" id="cardContainer">
-    <!-- Cards will be injected here -->
+    <!-- Network cards will be injected here -->
+  </div>
+
+  <div class="wallet-section" id="walletSection">
+    <h2>Download Supported Wallets</h2>
+    
+    <div class="chain-selector">
+      <select id="chainTypeSelector">
+        <option value="all">All Chain Types</option>
+        <option value="EVM">EVM</option>
+        <option value="Solana">Solana</option>
+        <option value="Bitcoin">Bitcoin</option>
+      </select>
+    </div>
+    
+    <div class="wallet-grid" id="walletGrid">
+      <!-- Wallet cards will be injected here -->
+    </div>
   </div>
 
   <script>
     let faucetData = [];
+    let walletData = [];
+    let uniqueChainTypes = new Set();
 
-    function renderCards(data) {
+    function renderNetworkCards(data) {
       const container = document.getElementById('cardContainer');
       container.innerHTML = '';
 
       if (data.length === 0) {
-        container.innerHTML = '<p>Tidak ditemukan jaringan dengan nama tersebut.</p>';
+        container.innerHTML = '<div class="no-results">No networks found matching your search.</div>';
         return;
       }
 
-      data.forEach(item => {
+      data.forEach(network => {
         const card = document.createElement('div');
         card.className = 'card';
 
-        const testnetLinks = item.testnetFaucets.length
-          ? item.testnetFaucets.map(url => `<a href="${url}" target="_blank">${url}</a>`).join("")
-          : "-";
+        // Testnet faucets
+        let testnetContent = '';
+        if (network.testnetFaucets.length > 0) {
+          testnetContent = network.testnetFaucets.map(faucet => `
+            <div class="faucet-item">
+              <span>🔹</span>
+              <a href="${faucet.url}" target="_blank" rel="noopener noreferrer">${faucet.name}</a>
+            </div>
+          `).join('');
+        } else {
+          testnetContent = '<div class="empty-state">No testnet faucets available</div>';
+        }
 
-        const mainnetLinks = item.mainnetFaucets.length
-          ? item.mainnetFaucets.map(url => `<a href="${url}" target="_blank">${url}</a>`).join("")
-          : "-";
+        // Mainnet faucets
+        let mainnetContent = '';
+        if (network.mainnetFaucets.length > 0) {
+          mainnetContent = network.mainnetFaucets.map(faucet => `
+            <div class="faucet-item">
+              <span>🔸</span>
+              <a href="${faucet.url}" target="_blank" rel="noopener noreferrer">${faucet.name}</a>
+            </div>
+          `).join('');
+        } else {
+          mainnetContent = '<div class="empty-state">No mainnet faucets available</div>';
+        }
 
         card.innerHTML = `
-          <h2>${item.networkName}</h2>
-          <p><strong>Testnet Faucets:</strong><br>${testnetLinks}</p>
-          <p><strong>Mainnet Faucets:</strong><br>${mainnetLinks}</p>
-          <p><strong>Wallet Providers:</strong> ${item.walletProviders.join(", ")}</p>
+          <h3>${network.networkEmoji || '🔗'} ${network.networkName}</h3>
+          
+          <div class="chain-type">
+            <span>Chain Type: ${network.chainType}</span>
+            <a class="download-wallet-link" onclick="scrollToWalletSection('${network.chainType}')">Download Wallet</a>
+          </div>
+          
+          <div class="faucet-section">
+            <h4>Testnet Faucets</h4>
+            <div class="faucet-list">
+              ${testnetContent}
+            </div>
+          </div>
+          
+          <div class="faucet-section">
+            <h4>Mainnet Faucets</h4>
+            <div class="faucet-list">
+              ${mainnetContent}
+            </div>
+          </div>
         `;
         container.appendChild(card);
       });
     }
 
-    function filterCards() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = faucetData.filter(item =>
-        item.networkName.toLowerCase().includes(query)
-      );
-      renderCards(filtered);
+    function renderWalletCards(chainType = 'all') {
+      const container = document.getElementById('walletGrid');
+      container.innerHTML = '';
+
+      const walletsToShow = chainType === 'all' 
+        ? walletData 
+        : walletData.filter(wallet => wallet.chainType === chainType);
+
+      if (walletsToShow.length === 0) {
+        container.innerHTML = '<div class="no-results">No wallets found for this chain type.</div>';
+        return;
+      }
+
+      walletsToShow.forEach(wallet => {
+        const card = document.createElement('div');
+        card.className = 'wallet-card';
+
+        card.innerHTML = `
+          <div class="wallet-header">
+            <span>${wallet.emoji}</span>
+            <div>
+              <div class="wallet-name">${wallet.name}</div>
+              <div class="wallet-chain">${wallet.chainType}</div>
+            </div>
+          </div>
+          <div class="wallet-links">
+            ${wallet.links.website ? `
+              <a href="${wallet.links.website}" target="_blank" rel="noopener noreferrer" class="wallet-link">
+                <span>🌐</span>
+                <span>Website</span>
+              </a>
+            ` : ''}
+            ${wallet.links.mobileApp ? `
+              <a href="${wallet.links.mobileApp}" target="_blank" rel="noopener noreferrer" class="wallet-link">
+                <span>📱</span>
+                <span>Mobile App</span>
+              </a>
+            ` : ''}
+            ${wallet.links.chromeExtension ? `
+              <a href="${wallet.links.chromeExtension}" target="_blank" rel="noopener noreferrer" class="wallet-link">
+                <span>🧩</span>
+                <span>Browser Extension</span>
+              </a>
+            ` : ''}
+          </div>
+        `;
+        container.appendChild(card);
+      });
     }
 
-    document.getElementById('searchInput').addEventListener('input', filterCards);
+    function scrollToWalletSection(chainType) {
+      const walletSection = document.getElementById('walletSection');
+      walletSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Set the selector to the specific chain type
+      const selector = document.getElementById('chainTypeSelector');
+      selector.value = chainType;
+      
+      // Trigger the filter
+      renderWalletCards(chainType);
+    }
 
-    // Load JSON
-    fetch('faucets.json')
-      .then(response => response.json())
-      .then(data => {
-        faucetData = data;
-        renderCards(faucetData);
+    function filterNetworkCards() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = faucetData.filter(item =>
+        item.networkName.toLowerCase().includes(query) || 
+        item.chainType.toLowerCase().includes(query)
+      );
+      renderNetworkCards(filtered);
+    }
+
+    // Initialize the page
+    function init() {
+      // Load data
+      Promise.all([
+        fetch('faucets.json').then(res => res.json()),
+        fetch('wallets.json').then(res => res.json())
+      ])
+      .then(([faucets, wallets]) => {
+        faucetData = faucets;
+        walletData = wallets;
+        
+        // Get unique chain types - FIXED: Using Set to prevent duplicates
+        const chainTypes = new Set(wallets.map(wallet => wallet.chainType));
+        
+        // Populate chain type selector - FIXED: Clear existing options first
+        const selector = document.getElementById('chainTypeSelector');
+        selector.innerHTML = '<option value="all">All Chain Types</option>';
+        
+        // Add unique chain types
+        chainTypes.forEach(type => {
+          const option = document.createElement('option');
+          option.value = type;
+          option.textContent = type;
+          selector.appendChild(option);
+        });
+        
+        // Render initial views
+        renderNetworkCards(faucetData);
+        renderWalletCards();
       })
       .catch(error => {
-        console.error('Error loading faucets.json:', error);
+        console.error('Error loading data:', error);
+        document.getElementById('cardContainer').innerHTML = `
+          <div class="no-results">Error loading data. Please try again later.</div>
+        `;
       });
+
+      // Event listeners
+      document.getElementById('searchInput').addEventListener('input', filterNetworkCards);
+      document.getElementById('chainTypeSelector').addEventListener('change', (e) => {
+        renderWalletCards(e.target.value);
+      });
+    }
+
+    // Start the application
+    init();
   </script>
 </body>
 </html>
