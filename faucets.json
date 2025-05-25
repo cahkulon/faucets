@@ -37,6 +37,10 @@
       {
         "name": "Solana Testnet Faucet",
         "url": "https://faucet.solana.com/"
+      },
+      {
+        "name": "Solana Faucet (solfaucet.com)",
+        "url": "https://solfaucet.com/"
       }
     ],
     "mainnetFaucets": [],
@@ -54,6 +58,14 @@
       {
         "name": "Sepolia Official Faucet",
         "url": "https://sepoliafaucet.com/"
+      },
+      {
+        "name": "Sepolia Faucet (MetaMask Docs)",
+        "url": "https://docs.metamask.io/developer-tools/faucet/"
+      },
+      {
+        "name": "Sepolia Faucet (Google Cloud)",
+        "url": "https://cloud.google.com/application/web3/faucet/ethereum/sepolia"
       }
     ],
     "mainnetFaucets": [
@@ -88,15 +100,39 @@
       {
         "name": "Testnet4",
         "url": "https://mempool.space/testnet4/faucet"
-       },
-       {
-        "name": "Testnet4",
+      },
+      {
+        "name": "Testnet4 (Alternative)",
         "url": "https://faucet.testnet4.dev/"
-       },
-       {
+      },
+      {
+        "name": "Testnet4 (coinfaucet.eu)",
+        "url": "https://coinfaucet.eu/en/btc-testnet4/"
+      },
+      {
         "name": "Mutinynet Signet",
         "url": "https://faucet.mutinynet.com/"
-       }
+      },
+      {
+        "name": "Signet Faucet (bitcoinsignetfaucet.com)",
+        "url": "https://bitcoinsignetfaucet.com/"
+      },
+      {
+        "name": "Signet Faucet (OKX)",
+        "url": "https://web3.okx.com/faucet/fiamma-chain/62"
+      },
+      {
+        "name": "Signet Faucet (dcorral.com)",
+        "url": "https://signet.dcorral.com/"
+      },
+      {
+        "name": "Signet Faucet (signetfaucet.com)",
+        "url": "https://signetfaucet.com/"
+      },
+      {
+        "name": "Fractal Faucet (Unisat)",
+        "url": "https://fractal-testnet.unisat.io/explorer/faucet"
+      }
     ],
     "mainnetFaucets": [
       {
@@ -105,5 +141,91 @@
       }
     ],
     "walletProviders": ["Unisat", "Electrum"]
+  },
+  {
+    "networkName": "Unichain",
+    "networkEmoji": "🧬",
+    "chainType": "EVM",
+    "testnetFaucets": [
+      {
+        "name": "Sepolia Faucet (QuickNode)",
+        "url": "https://faucet.quicknode.com/unichain/sepolia"
+      }
+    ],
+    "mainnetFaucets": [],
+    "walletProviders": ["Metamask", "OKX Wallet"]
+  },
+  {
+    "networkName": "Metis",
+    "networkEmoji": "🧪",
+    "chainType": "EVM",
+    "testnetFaucets": [
+      {
+        "name": "Sepolia Faucet (Thirdweb)",
+        "url": "https://thirdweb.com/metis-sepolia-testnet"
+      }
+    ],
+    "mainnetFaucets": [],
+    "walletProviders": ["Metamask"]
+  },
+  {
+    "networkName": "Nibiru",
+    "networkEmoji": "🌌",
+    "chainType": "Cosmos",
+    "testnetFaucets": [
+      {
+        "name": "Nibiru Testnet Faucet",
+        "url": "https://app.nibiru.fi/faucet"
+      }
+    ],
+    "mainnetFaucets": [],
+    "walletProviders": ["Keplr Wallet"]
+  },
+  {
+    "networkName": "Coredao",
+    "networkEmoji": "🧱",
+    "chainType": "EVM",
+    "testnetFaucets": [
+      {
+        "name": "Coredao Testnet Faucet",
+        "url": "https://scan.test.btcs.network/faucet"
+      }
+    ],
+    "mainnetFaucets": [],
+    "walletProviders": ["Metamask"]
+  },
+  {
+    "networkName": "Bitlayer",
+    "networkEmoji": "🧠",
+    "chainType": "EVM",
+    "testnetFaucets": [
+      {
+        "name": "Bitlayer Testnet Faucet",
+        "url": "https://www.bitlayer.org/faucet"
+      }
+    ],
+    "mainnetFaucets": [],
+    "walletProviders": []
+  },
+  {
+    "networkName": "Sui",
+    "networkEmoji": "💧",
+    "chainType": "Sui",
+    "testnetFaucets": [
+      {
+        "name": "Sui Faucet (n1stake)",
+        "url": "https://faucet.n1stake.com/"
+      },
+      {
+        "name": "Sui Faucet (Blockbolt)",
+        "url": "https://faucet.blockbolt.io/"
+      },
+      {
+        "name": "Sui Faucet (Discord)",
+        "url": "https://discord.gg/sui"
+      }
+    ],
+    "mainnetFaucets": [],
+    "walletProviders": ["Slush Wallet"]
   }
 ]

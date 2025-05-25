@@ -78,5 +78,26 @@
         "https://app.mutinywallet.com/"
       ]
     }
+  },
+  {
+  "name": "Keplr Wallet",
+  "emoji": "🪐",
+  "chainType": "Cosmos",
+  "links": {
+    "website": "https://keplr.app/",
+    "chromeExtension": "https://chromewebstore.google.com/detail/keplr/dmkamcknogkgcdfhhbddcghachkejeap",
+    "mobileApp": "https://www.keplr.app/download"
   }
+},
+{
+  "name": "Slush Wallet",
+  "emoji": "❄️",
+  "chainType": "Sui",
+  "links": {
+    "website": "https://slush.app//",
+    "chromeExtension": "https://chromewebstore.google.com/detail/slush-%E2%80%94-a-sui-wallet/opcgpfmipidbgpenhmajoajpbobppdil",
+    "mobileApp": ""
+  }
+}
+
 ]
