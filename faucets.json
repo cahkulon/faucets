@@ -76,7 +76,27 @@
       {
         "name": "Testnet Faucet",
         "url": "https://testnet-faucet.com/btc-testnet/"
-      }
+      },
+      {
+        "name": "Yala Bitcoin",
+        "url": "https://app-testnet.yala.org/faucet/"
+      },
+      {
+        "name": "Testnet3",
+        "url": "https://coinfaucet.eu/en/btc-testnet/"
+      },
+      {
+        "name": "Testnet4",
+        "url": "https://mempool.space/testnet4/faucet"
+       },
+       {
+        "name": "Testnet4",
+        "url": "https://faucet.testnet4.dev/"
+       },
+       {
+        "name": "Mutinynet Signet",
+        "url": "https://faucet.mutinynet.com/"
+       }
     ],
     "mainnetFaucets": [
       {

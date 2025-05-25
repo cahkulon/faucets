@@ -67,5 +67,16 @@
       "website": "https://electrum.org/",
       "desktopApp": "https://electrum.org/#download"
     }
+  },
+  {
+    "name": "Mutiny Wallet",
+    "emoji": "🩷",
+    "chainType": "Bitcoin",
+    "links": {
+      "website": [
+        "https://signet-app.mutinywallet.com/",
+        "https://app.mutinywallet.com/"
+      ]
+    }
   }
 ]

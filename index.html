@@ -270,7 +270,6 @@
   <script>
     let faucetData = [];
     let walletData = [];
-    let uniqueChainTypes = new Set();
 
     function renderNetworkCards(data) {
       const container = document.getElementById('cardContainer');
@@ -354,6 +353,21 @@
         const card = document.createElement('div');
         card.className = 'wallet-card';
 
+        let linksHTML = '';
+        
+        // Process each link type
+        for (const [linkType, linkValue] of Object.entries(wallet.links)) {
+          if (Array.isArray(linkValue)) {
+            // Handle multiple links of same type
+            linkValue.forEach((url, index) => {
+              linksHTML += createWalletLink(linkType, url, index);
+            });
+          } else if (linkValue) {
+            // Handle single link
+            linksHTML += createWalletLink(linkType, linkValue);
+          }
+        }
+
         card.innerHTML = `
           <div class="wallet-header">
             <span>${wallet.emoji}</span>
@@ -363,39 +377,50 @@
             </div>
           </div>
           <div class="wallet-links">
-            ${wallet.links.website ? `
-              <a href="${wallet.links.website}" target="_blank" rel="noopener noreferrer" class="wallet-link">
-                <span>🌐</span>
-                <span>Website</span>
-              </a>
-            ` : ''}
-            ${wallet.links.mobileApp ? `
-              <a href="${wallet.links.mobileApp}" target="_blank" rel="noopener noreferrer" class="wallet-link">
-                <span>📱</span>
-                <span>Mobile App</span>
-              </a>
-            ` : ''}
-            ${wallet.links.chromeExtension ? `
-              <a href="${wallet.links.chromeExtension}" target="_blank" rel="noopener noreferrer" class="wallet-link">
-                <span>🧩</span>
-                <span>Browser Extension</span>
-              </a>
-            ` : ''}
+            ${linksHTML}
           </div>
         `;
         container.appendChild(card);
       });
     }
 
+    function createWalletLink(linkType, url, index = 0) {
+      const linkIcons = {
+        website: '🌐',
+        chromeExtension: '🧩',
+        mobileApp: '📱',
+        desktopApp: '💻'
+      };
+      
+      const linkLabels = {
+        website: 'Website',
+        chromeExtension: 'Extension',
+        mobileApp: 'Mobile App',
+        desktopApp: 'Desktop App'
+      };
+      
+      const icon = linkIcons[linkType] || '🔗';
+      let label = linkLabels[linkType] || linkType;
+      
+      // Add number if multiple links of same type
+      if (index > 0) {
+        label += ` ${index + 1}`;
+      }
+      
+      return `
+        <a href="${url}" target="_blank" rel="noopener noreferrer" class="wallet-link">
+          <span>${icon}</span>
+          <span>${label}</span>
+        </a>
+      `;
+    }
+
     function scrollToWalletSection(chainType) {
       const walletSection = document.getElementById('walletSection');
       walletSection.scrollIntoView({ behavior: 'smooth' });
       
-      // Set the selector to the specific chain type
       const selector = document.getElementById('chainTypeSelector');
       selector.value = chainType;
-      
-      // Trigger the filter
       renderWalletCards(chainType);
     }
 
@@ -408,9 +433,7 @@
       renderNetworkCards(filtered);
     }
 
-    // Initialize the page
     function init() {
-      // Load data
       Promise.all([
         fetch('faucets.json').then(res => res.json()),
         fetch('wallets.json').then(res => res.json())
@@ -419,14 +442,13 @@
         faucetData = faucets;
         walletData = wallets;
         
-        // Get unique chain types - FIXED: Using Set to prevent duplicates
-        const chainTypes = new Set(wallets.map(wallet => wallet.chainType));
+        // Get unique chain types
+        const chainTypes = [...new Set(wallets.map(wallet => wallet.chainType))];
         
-        // Populate chain type selector - FIXED: Clear existing options first
+        // Populate chain type selector
         const selector = document.getElementById('chainTypeSelector');
         selector.innerHTML = '<option value="all">All Chain Types</option>';
         
-        // Add unique chain types
         chainTypes.forEach(type => {
           const option = document.createElement('option');
           option.value = type;
@@ -434,7 +456,6 @@
           selector.appendChild(option);
         });
         
-        // Render initial views
         renderNetworkCards(faucetData);
         renderWalletCards();
       })
@@ -445,14 +466,12 @@
         `;
       });
 
-      // Event listeners
       document.getElementById('searchInput').addEventListener('input', filterNetworkCards);
       document.getElementById('chainTypeSelector').addEventListener('change', (e) => {
         renderWalletCards(e.target.value);
       });
     }
 
-    // Start the application
     init();
   </script>
 </body>
