@@ -13,8 +13,7 @@
         "url": "https://testnet.binance.org/faucet-smart"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": ["Metamask", "OKX Wallet"]
+    "mainnetFaucets": []
   },
   {
     "networkName": "Polygon",
@@ -26,8 +25,7 @@
         "url": "https://faucet.polygon.technology/"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": ["Metamask"]
+    "mainnetFaucets": []
   },
   {
     "networkName": "Solana",
@@ -43,8 +41,7 @@
         "url": "https://solfaucet.com/"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": ["Phantom", "Solflare"]
+    "mainnetFaucets": []
   },
   {
     "networkName": "Ethereum",
@@ -73,8 +70,7 @@
         "name": "Ethereum Mainnet Faucet",
         "url": "https://freeeth.xyz/"
       }
-    ],
-    "walletProviders": ["Metamask", "Coinbase Wallet"]
+    ]
   },
   {
     "networkName": "Bitcoin",
@@ -139,8 +135,7 @@
         "name": "Bitcoin Mainnet Faucet",
         "url": "https://freebitco.in/"
       }
-    ],
-    "walletProviders": ["Unisat", "Electrum"]
+    ]
   },
   {
     "networkName": "Unichain",
@@ -152,8 +147,7 @@
         "url": "https://faucet.quicknode.com/unichain/sepolia"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": ["Metamask", "OKX Wallet"]
+    "mainnetFaucets": []
   },
   {
     "networkName": "Metis",
@@ -165,8 +159,7 @@
         "url": "https://thirdweb.com/metis-sepolia-testnet"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": ["Metamask"]
+    "mainnetFaucets": []
   },
   {
     "networkName": "Nibiru",
@@ -178,8 +171,7 @@
         "url": "https://app.nibiru.fi/faucet"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": ["Keplr Wallet"]
+    "mainnetFaucets": []
   },
   {
     "networkName": "Coredao",
@@ -191,8 +183,7 @@
         "url": "https://scan.test.btcs.network/faucet"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": ["Metamask"]
+    "mainnetFaucets": []
   },
   {
     "networkName": "Bitlayer",
@@ -204,8 +195,7 @@
         "url": "https://www.bitlayer.org/faucet"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": []
+    "mainnetFaucets": []
   },
   {
     "networkName": "Sui",
@@ -225,20 +215,42 @@
         "url": "https://discord.gg/sui"
       }
     ],
-    "mainnetFaucets": [],
-    "walletProviders": ["Slush Wallet"]
+    "mainnetFaucets": []
   },
   {
-  "networkName": "Avalanche C-Chain",
-  "networkEmoji": "🏔️",
-  "chainType": "EVM",
-  "testnetFaucets": [
-    {
-      "name": "Avalanche Fuji Testnet Faucet",
-      "url": "https://core.app/tools/testnet-faucet/"
-    }
-  ],
-  "mainnetFaucets": [],
-  "walletProviders": ["Metamask", "OKX Wallet"]
-}
+    "networkName": "Avalanche C-Chain",
+    "networkEmoji": "🏔️",
+    "chainType": "EVM",
+    "testnetFaucets": [
+      {
+        "name": "Avalanche Fuji Testnet Faucet",
+        "url": "https://core.app/tools/testnet-faucet/"
+      }
+    ],
+    "mainnetFaucets": []
+  },
+  {
+    "networkName": "Arbitrum",
+    "networkEmoji": "🌀",
+    "chainType": "EVM",
+    "testnetFaucets": [
+      {
+        "name": "Arbitrum Sepolia Faucet",
+        "url": "https://faucet.quicknode.com/arbitrum/sepolia"
+      }
+    ],
+    "mainnetFaucets": []
+  },
+  {
+    "networkName": "Optimism",
+    "networkEmoji": "🚀",
+    "chainType": "EVM",
+    "testnetFaucets": [
+      {
+        "name": "Optimism Sepolia Faucet",
+        "url": "https://faucet.quicknode.com/optimism/sepolia"
+      }
+    ],
+    "mainnetFaucets": []
+  }
 ]
