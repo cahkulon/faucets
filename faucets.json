@@ -227,5 +227,18 @@
     ],
     "mainnetFaucets": [],
     "walletProviders": ["Slush Wallet"]
-  }
+  },
+  {
+  "networkName": "Avalanche C-Chain",
+  "networkEmoji": "🏔️",
+  "chainType": "EVM",
+  "testnetFaucets": [
+    {
+      "name": "Avalanche Fuji Testnet Faucet",
+      "url": "https://core.app/tools/testnet-faucet/"
+    }
+  ],
+  "mainnetFaucets": [],
+  "walletProviders": ["Metamask", "OKX Wallet"]
+}
 ]
